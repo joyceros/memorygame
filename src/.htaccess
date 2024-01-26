@@ -1,0 +1,13 @@
+# Remove the php extension from the filename
+RewriteEngine On Options FollowSymLinks
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^([^.]+)$ $1.php [NC,L]
+RewriteRule  ^(.*)$/#/$1 [L]
+
+# Set the headers for the restful api
+Header always set Access-Control-Allow-Origin http://angular
+Header always set Access-Control-Max-Age "1000"
+Header always set Access-Control-Allow-Headers "X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding"
+Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
